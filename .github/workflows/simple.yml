@@ -1,0 +1,32 @@
+name: Simple Shell Commands
+
+on: [push]
+
+jobs:
+  run-shell-commands:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print a Hello World string
+        run: echo "Hello World"
+      - name: Run multiline script
+        run: |
+          node -v
+          npm -v
+      - name: Python Commands
+        run: |
+          import platform
+          print(platform.processor())
+        shell: python
+
+  run-windows-commands:
+    runs-on: windows-latest
+    needs: ["run-shell-commands"] # required before start - avoiding parallel execution 
+    steps:
+      - name: Directory PowerShell
+        run: Get-Location
+      - name: Directory Bash
+        run: pwd
+      - name: Show Directory Tree
+        run: |
+          tree /F
+        shell: powershell
