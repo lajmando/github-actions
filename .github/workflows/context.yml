@@ -15,15 +15,18 @@ jobs:
 
   dump_contexts_to_log:
     runs-on: ubuntu-latest
+    if: github.event_name == 'push' # don't need to put curly brackets in if statements
     steps:
       - name: Dump GitHub context
         id: github_context_step
-        run: echo '${{ toJSON(github) }}'
+        run: eccho '${{ toJSON(github) }}'
       - name: Dump job context
+        if: failure() # this step will run even if in previous step is typo
         run: echo '${{ toJSON(job) }}'
       - name: Dump steps context
         run: echo '${{ toJSON(steps) }}'
       - name: Dump runner context
+        if: always() # this step will always run
         run: echo '${{ toJSON(runner) }}'
       - name: Dump strategy context
         run: echo '${{ toJSON(strategy) }}'
