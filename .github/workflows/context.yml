@@ -1,7 +1,18 @@
-name: Context testing
+name: Context Testing
+
 on: push
 
 jobs:
+  functions-test: 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Function Test
+        run: |
+          echo ${{ contains('hello', 'll')}}
+          echo ${{ startsWith('hello', 'he')}}
+          echo ${{ endsWith('hello', 'lo')}}
+          echo ${{ format('Hello {0} {1} {2}', 'Word', '!', '!!')}}
+
   dump_contexts_to_log:
     runs-on: ubuntu-latest
     steps:
