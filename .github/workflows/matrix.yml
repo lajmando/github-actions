@@ -10,14 +10,14 @@ jobs:
         node_version: [6, 8, 10]
         include: 
           - os: ubuntu-latest
-            node-version: 8
+            node_version: 8
             is_ubuntu_8: "true" # extra value for existing matrix
         exclude:
           - os: ubuntu-latest
-            node-version: 6
+            node_version: 6
           - os: macos-latest
-            node-version: 8
-      fail-fast: true
+            node_version: 8
+      fail-fast: false
       max-parallel: 3
     runs-on: ${{ matrix.os }}
     env: 
