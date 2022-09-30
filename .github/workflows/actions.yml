@@ -1,15 +1,15 @@
 name: Actions Workflow
 
 on: 
-  push:
-    # branches:
-    #   - master
-    # tags: # cannot be used together with tags-ignore
-    #   - v1.*
-    # paths:
-    #   - '**.cs' # it will run only when .cs files are changed
-    # paths-ignore:
-    #   - 'docs/**' # it will ignore workflow run for every change in docs folder
+  # push:
+  #   branches:
+  #     - master
+  #   tags: # cannot be used together with tags-ignore
+  #     - v1.*
+  #   paths:
+  #     - '**.cs' # it will run only when .cs files are changed
+  #   paths-ignore:
+  #     - 'docs/**' # it will ignore workflow run for every change in docs folder
   pull_request:
     types: [opened, reopened, assigned]
     branches: # cannot be used together with branches-ignore
