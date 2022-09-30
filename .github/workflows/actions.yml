@@ -1,54 +1,54 @@
-# name: Actions Workflow
+name: Actions Workflow
 
-# on: 
-#   push:
-#     branches:
-#       - master
-#     # tags: # cannot be used together with tags-ignore
-#     #   - v1.*
-#     # paths:
-#     #   - '**.cs' # it will run only when .cs files are changed
-#     # paths-ignore:
-#     #   - 'docs/**' # it will ignore workflow run for every change in docs folder
-#   pull_request:
-#     types: [opened, reopened, assigned]
-#     branches: # cannot be used together with branches-ignore
-#       - master
-#       - 'feature/*' # matches feature/featA, feature/featB, doesn't match feature feature/feat/a
-#       - 'feature/**' # this will match feature/feat/a
-#       - '!feature/featC' # it will ignore featC even if it match patterns
-#   # schedule:
-#   #   - cron: "* * * * *" # Workflow will run every minute
-#   # repository_dispatch:
-#   #   types: [build]
+on: 
+  push:
+    # branches:
+    #   - master
+    # tags: # cannot be used together with tags-ignore
+    #   - v1.*
+    # paths:
+    #   - '**.cs' # it will run only when .cs files are changed
+    # paths-ignore:
+    #   - 'docs/**' # it will ignore workflow run for every change in docs folder
+  pull_request:
+    types: [opened, reopened, assigned]
+    branches: # cannot be used together with branches-ignore
+      - master
+      - 'feature/*' # matches feature/featA, feature/featB, doesn't match feature feature/feat/a
+      - 'feature/**' # this will match feature/feat/a
+      - '!feature/featC' # it will ignore featC even if it match patterns
+  # schedule:
+  #   - cron: "* * * * *" # Workflow will run every minute
+  # repository_dispatch:
+  #   types: [build]
 
-# jobs: 
-#   run-github-actions:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: List Files
-#         run: |
-#           pwd
-#           ls -a
+jobs: 
+  run-github-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: List Files
+        run: |
+          pwd
+          ls -a
 
-#           # Github
-#           echo $GITHUB_SHA
-#           echo $GITHUB_REPOSITORY
-#           echo $GITHUB_WORKSPACE
-#           echo "${{ github.token }}"
-#           # git clone git@github:$GITHUB_REPOSITORY
-#           # git checkout $GITHUB_SHA
+          # Github
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
+          echo "${{ github.token }}"
+          # git clone git@github:$GITHUB_REPOSITORY
+          # git checkout $GITHUB_SHA
           
-#       - name: Checkout
-#         uses: actions/checkout@v1
-#       - name: List Files After Checkout
-#         run: |
-#           pwd
-#           ls -a
-#       - name: Simple JS Action
-#         id: greet
-#         uses: actions/hello-world-javascript-action@v1 # reference to repository - @branch, @version or @commit
-#         with: 
-#           who-to-greet: Damian
-#       - name: Log Greeting Time
-#         run: echo "${{ steps.greet.outputs.time }}"
+      - name: Checkout
+        uses: actions/checkout@v1
+      - name: List Files After Checkout
+        run: |
+          pwd
+          ls -a
+      - name: Simple JS Action
+        id: greet
+        uses: actions/hello-world-javascript-action@v1 # reference to repository - @branch, @version or @commit
+        with: 
+          who-to-greet: Damian
+      - name: Log Greeting Time
+        run: echo "${{ steps.greet.outputs.time }}"
