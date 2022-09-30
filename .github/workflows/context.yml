@@ -7,6 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Function Test
+        continue-on-error: true #  even if it fails rest of the steps will be executed
+        # timeout-minutes: 360
         run: |
           echo ${{ contains('hello', 'll')}}
           echo ${{ startsWith('hello', 'he')}}
